@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "373184904523",
+    "project_id": "scholarships-1bebe",
+    "storage_bucket": "scholarships-1bebe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373184904523:android:703d5c7509200448863cce",
+        "android_client_info": {
+          "package_name": "com.scholarships"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDum6B6G1zMsJFgzqORIe1tzYJpJhBu0Ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,39 @@
+# Flutter & Dart defaults
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.idea/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# iOS & macOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/build/
+macos/Flutter/Flutter.framework
+macos/Pods/
+macos/build/
+
+# VS Code
+.vscode/
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Others
+.env          
+
+# Firebase emulators / tools
+.firebase/
+firebase-debug.log
