@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:scholarships/core/addons/scholarships_equality_checker.dart';
 import 'package:scholarships/features/scholarships/domain/entities/scholarship_entity.dart';
 
 part 'favorites_bloc.freezed.dart';
@@ -9,7 +10,7 @@ part 'favorites_state.dart';
 
 @lazySingleton
 class FavoritesBloc extends HydratedBloc<FavoritesEvent, FavoritesState> {
-  FavoritesBloc() : super(const FavoritesState.loading()) {
+  FavoritesBloc() : super(const FavoritesState.loaded(scholarships: [])) {
     on<_AddTile>(_addTile);
     on<_RemoveTile>(_removeTile);
   }
@@ -17,7 +18,10 @@ class FavoritesBloc extends HydratedBloc<FavoritesEvent, FavoritesState> {
   Future<void> _addTile(_AddTile event, Emitter<FavoritesState> emit) async {
     final current = state;
     if (current is _Loaded) {
-      if (!current.scholarships.contains(event.tile)) {
+      final bool exists = current.scholarships.any(
+        (e) => areScholarshipsEqual(e, event.tile),
+      );
+      if (!exists) {
         emit(
           FavoritesState.loaded(
             scholarships: [...current.scholarships, event.tile],
@@ -31,12 +35,12 @@ class FavoritesBloc extends HydratedBloc<FavoritesEvent, FavoritesState> {
     _RemoveTile event,
     Emitter<FavoritesState> emit,
   ) async {
-    final current = state;
+    final FavoritesState current = state;
     if (current is _Loaded) {
       emit(
         FavoritesState.loaded(
           scholarships: current.scholarships
-              .where((e) => e != event.tile)
+              .where((e) => !areScholarshipsEqual(e, event.tile))
               .toList(),
         ),
       );
@@ -47,12 +51,12 @@ class FavoritesBloc extends HydratedBloc<FavoritesEvent, FavoritesState> {
   FavoritesState? fromJson(Map<String, dynamic> json) {
     try {
       final List<dynamic> favoritesJson = json['favorites'] as List<dynamic>;
-      final favorites = favoritesJson
+      final List<ScholarshipEntity> favorites = favoritesJson
           .map((e) => ScholarshipEntity.fromJson(e as Map<String, dynamic>))
           .toList();
       return FavoritesState.loaded(scholarships: favorites);
-    } catch (e) {
-      return const FavoritesState.loading();
+    } catch (_) {
+      return const FavoritesState.loaded(scholarships: []);
     }
   }
 

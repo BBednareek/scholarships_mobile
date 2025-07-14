@@ -9,7 +9,6 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Ulubione')),
       body: BlocBuilder<FavoritesBloc, FavoritesState>(
         builder: (context, state) {
           return state.maybeWhen(
@@ -17,7 +16,10 @@ class FavoritesScreen extends StatelessWidget {
               itemCount: favorites.length,
               itemBuilder: (context, index) {
                 final fav = favorites[index];
-                return ScholarshipTile(scholarshipEntity: fav);
+                return Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: ScholarshipTile(scholarshipEntity: fav),
+                );
               },
             ),
             orElse: () => const Center(child: Text('Brak ulubionych')),

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:scholarships/core/error/failures.dart';
@@ -10,8 +9,6 @@ class ScholarshipsUsecase {
   final ScholarshipsRepository scholarshipsRepository;
   ScholarshipsUsecase({required this.scholarshipsRepository});
 
-  Future<Either<Failure, List<ScholarshipEntity>>> call({
-    DocumentSnapshot? startAfter,
-  }) async =>
-      await scholarshipsRepository.getScholarships(startAfter: startAfter);
+  Future<Either<Failure, List<ScholarshipEntity>>> call() async =>
+      await scholarshipsRepository.getScholarships();
 }

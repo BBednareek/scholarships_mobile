@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ScholarshipsEvent {
 
- bool get loadMore;
+ bool get loadMore; int get pageSize;
 /// Create a copy of ScholarshipsEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ScholarshipsEventCopyWith<ScholarshipsEvent> get copyWith => _$ScholarshipsEven
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ScholarshipsEvent&&(identical(other.loadMore, loadMore) || other.loadMore == loadMore));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ScholarshipsEvent&&(identical(other.loadMore, loadMore) || other.loadMore == loadMore)&&(identical(other.pageSize, pageSize) || other.pageSize == pageSize));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loadMore);
+int get hashCode => Object.hash(runtimeType,loadMore,pageSize);
 
 @override
 String toString() {
-  return 'ScholarshipsEvent(loadMore: $loadMore)';
+  return 'ScholarshipsEvent(loadMore: $loadMore, pageSize: $pageSize)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ScholarshipsEventCopyWith<$Res>  {
   factory $ScholarshipsEventCopyWith(ScholarshipsEvent value, $Res Function(ScholarshipsEvent) _then) = _$ScholarshipsEventCopyWithImpl;
 @useResult
 $Res call({
- bool loadMore
+ bool loadMore, int pageSize
 });
 
 
@@ -62,10 +62,11 @@ class _$ScholarshipsEventCopyWithImpl<$Res>
 
 /// Create a copy of ScholarshipsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? loadMore = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? loadMore = null,Object? pageSize = null,}) {
   return _then(_self.copyWith(
 loadMore: null == loadMore ? _self.loadMore : loadMore // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,pageSize: null == pageSize ? _self.pageSize : pageSize // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
@@ -150,10 +151,10 @@ return getScholarships(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( bool loadMore)?  getScholarships,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( bool loadMore,  int pageSize)?  getScholarships,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GetScholarships() when getScholarships != null:
-return getScholarships(_that.loadMore);case _:
+return getScholarships(_that.loadMore,_that.pageSize);case _:
   return orElse();
 
 }
@@ -171,10 +172,10 @@ return getScholarships(_that.loadMore);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( bool loadMore)  getScholarships,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( bool loadMore,  int pageSize)  getScholarships,}) {final _that = this;
 switch (_that) {
 case _GetScholarships():
-return getScholarships(_that.loadMore);case _:
+return getScholarships(_that.loadMore,_that.pageSize);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +192,10 @@ return getScholarships(_that.loadMore);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( bool loadMore)?  getScholarships,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( bool loadMore,  int pageSize)?  getScholarships,}) {final _that = this;
 switch (_that) {
 case _GetScholarships() when getScholarships != null:
-return getScholarships(_that.loadMore);case _:
+return getScholarships(_that.loadMore,_that.pageSize);case _:
   return null;
 
 }
@@ -206,10 +207,11 @@ return getScholarships(_that.loadMore);case _:
 
 
 class _GetScholarships implements ScholarshipsEvent {
-  const _GetScholarships({this.loadMore = false});
+  const _GetScholarships({this.loadMore = false, this.pageSize = 20});
   
 
 @override@JsonKey() final  bool loadMore;
+@override@JsonKey() final  int pageSize;
 
 /// Create a copy of ScholarshipsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +223,16 @@ _$GetScholarshipsCopyWith<_GetScholarships> get copyWith => __$GetScholarshipsCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetScholarships&&(identical(other.loadMore, loadMore) || other.loadMore == loadMore));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetScholarships&&(identical(other.loadMore, loadMore) || other.loadMore == loadMore)&&(identical(other.pageSize, pageSize) || other.pageSize == pageSize));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loadMore);
+int get hashCode => Object.hash(runtimeType,loadMore,pageSize);
 
 @override
 String toString() {
-  return 'ScholarshipsEvent.getScholarships(loadMore: $loadMore)';
+  return 'ScholarshipsEvent.getScholarships(loadMore: $loadMore, pageSize: $pageSize)';
 }
 
 
@@ -241,7 +243,7 @@ abstract mixin class _$GetScholarshipsCopyWith<$Res> implements $ScholarshipsEve
   factory _$GetScholarshipsCopyWith(_GetScholarships value, $Res Function(_GetScholarships) _then) = __$GetScholarshipsCopyWithImpl;
 @override @useResult
 $Res call({
- bool loadMore
+ bool loadMore, int pageSize
 });
 
 
@@ -258,10 +260,11 @@ class __$GetScholarshipsCopyWithImpl<$Res>
 
 /// Create a copy of ScholarshipsEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? loadMore = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? loadMore = null,Object? pageSize = null,}) {
   return _then(_GetScholarships(
 loadMore: null == loadMore ? _self.loadMore : loadMore // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,pageSize: null == pageSize ? _self.pageSize : pageSize // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
@@ -312,12 +315,12 @@ extension ScholarshipsStatePatterns on ScholarshipsState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Loading value)?  loading,TResult Function( _Loaded value)?  loaded,TResult Function( _Error value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Loading value)?  loading,TResult Function( Loaded value)?  loaded,TResult Function( Error value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Loading() when loading != null:
-return loading(_that);case _Loaded() when loaded != null:
-return loaded(_that);case _Error() when error != null:
+case Loading() when loading != null:
+return loading(_that);case Loaded() when loaded != null:
+return loaded(_that);case Error() when error != null:
 return error(_that);case _:
   return orElse();
 
@@ -336,12 +339,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Loading value)  loading,required TResult Function( _Loaded value)  loaded,required TResult Function( _Error value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Loading value)  loading,required TResult Function( Loaded value)  loaded,required TResult Function( Error value)  error,}){
 final _that = this;
 switch (_that) {
-case _Loading():
-return loading(_that);case _Loaded():
-return loaded(_that);case _Error():
+case Loading():
+return loading(_that);case Loaded():
+return loaded(_that);case Error():
 return error(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -359,12 +362,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Loading value)?  loading,TResult? Function( _Loaded value)?  loaded,TResult? Function( _Error value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Loading value)?  loading,TResult? Function( Loaded value)?  loaded,TResult? Function( Error value)?  error,}){
 final _that = this;
 switch (_that) {
-case _Loading() when loading != null:
-return loading(_that);case _Loaded() when loaded != null:
-return loaded(_that);case _Error() when error != null:
+case Loading() when loading != null:
+return loading(_that);case Loaded() when loaded != null:
+return loaded(_that);case Error() when error != null:
 return error(_that);case _:
   return null;
 
@@ -384,9 +387,9 @@ return error(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  loading,TResult Function( List<ScholarshipEntity> scholarships)?  loaded,TResult Function( String errorMessage)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Loading() when loading != null:
-return loading();case _Loaded() when loaded != null:
-return loaded(_that.scholarships);case _Error() when error != null:
+case Loading() when loading != null:
+return loading();case Loaded() when loaded != null:
+return loaded(_that.scholarships);case Error() when error != null:
 return error(_that.errorMessage);case _:
   return orElse();
 
@@ -407,9 +410,9 @@ return error(_that.errorMessage);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  loading,required TResult Function( List<ScholarshipEntity> scholarships)  loaded,required TResult Function( String errorMessage)  error,}) {final _that = this;
 switch (_that) {
-case _Loading():
-return loading();case _Loaded():
-return loaded(_that.scholarships);case _Error():
+case Loading():
+return loading();case Loaded():
+return loaded(_that.scholarships);case Error():
 return error(_that.errorMessage);case _:
   throw StateError('Unexpected subclass');
 
@@ -429,9 +432,9 @@ return error(_that.errorMessage);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  loading,TResult? Function( List<ScholarshipEntity> scholarships)?  loaded,TResult? Function( String errorMessage)?  error,}) {final _that = this;
 switch (_that) {
-case _Loading() when loading != null:
-return loading();case _Loaded() when loaded != null:
-return loaded(_that.scholarships);case _Error() when error != null:
+case Loading() when loading != null:
+return loading();case Loaded() when loaded != null:
+return loaded(_that.scholarships);case Error() when error != null:
 return error(_that.errorMessage);case _:
   return null;
 
@@ -443,8 +446,8 @@ return error(_that.errorMessage);case _:
 /// @nodoc
 
 
-class _Loading implements ScholarshipsState {
-  const _Loading();
+class Loading implements ScholarshipsState {
+  const Loading();
   
 
 
@@ -454,7 +457,7 @@ class _Loading implements ScholarshipsState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loading);
 }
 
 
@@ -475,8 +478,8 @@ String toString() {
 /// @nodoc
 
 
-class _Loaded implements ScholarshipsState {
-  const _Loaded({required final  List<ScholarshipEntity> scholarships}): _scholarships = scholarships;
+class Loaded implements ScholarshipsState {
+  const Loaded({required final  List<ScholarshipEntity> scholarships}): _scholarships = scholarships;
   
 
  final  List<ScholarshipEntity> _scholarships;
@@ -491,13 +494,13 @@ class _Loaded implements ScholarshipsState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
+$LoadedCopyWith<Loaded> get copyWith => _$LoadedCopyWithImpl<Loaded>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._scholarships, _scholarships));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Loaded&&const DeepCollectionEquality().equals(other._scholarships, _scholarships));
 }
 
 
@@ -513,8 +516,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class _$LoadedCopyWith<$Res> implements $ScholarshipsStateCopyWith<$Res> {
-  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
+abstract mixin class $LoadedCopyWith<$Res> implements $ScholarshipsStateCopyWith<$Res> {
+  factory $LoadedCopyWith(Loaded value, $Res Function(Loaded) _then) = _$LoadedCopyWithImpl;
 @useResult
 $Res call({
  List<ScholarshipEntity> scholarships
@@ -525,17 +528,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res>
-    implements _$LoadedCopyWith<$Res> {
-  __$LoadedCopyWithImpl(this._self, this._then);
+class _$LoadedCopyWithImpl<$Res>
+    implements $LoadedCopyWith<$Res> {
+  _$LoadedCopyWithImpl(this._self, this._then);
 
-  final _Loaded _self;
-  final $Res Function(_Loaded) _then;
+  final Loaded _self;
+  final $Res Function(Loaded) _then;
 
 /// Create a copy of ScholarshipsState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? scholarships = null,}) {
-  return _then(_Loaded(
+  return _then(Loaded(
 scholarships: null == scholarships ? _self._scholarships : scholarships // ignore: cast_nullable_to_non_nullable
 as List<ScholarshipEntity>,
   ));
@@ -547,8 +550,8 @@ as List<ScholarshipEntity>,
 /// @nodoc
 
 
-class _Error implements ScholarshipsState {
-  const _Error({required this.errorMessage});
+class Error implements ScholarshipsState {
+  const Error({required this.errorMessage});
   
 
  final  String errorMessage;
@@ -557,13 +560,13 @@ class _Error implements ScholarshipsState {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+$ErrorCopyWith<Error> get copyWith => _$ErrorCopyWithImpl<Error>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Error&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
@@ -579,8 +582,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class _$ErrorCopyWith<$Res> implements $ScholarshipsStateCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
+abstract mixin class $ErrorCopyWith<$Res> implements $ScholarshipsStateCopyWith<$Res> {
+  factory $ErrorCopyWith(Error value, $Res Function(Error) _then) = _$ErrorCopyWithImpl;
 @useResult
 $Res call({
  String errorMessage
@@ -591,17 +594,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(this._self, this._then);
+class _$ErrorCopyWithImpl<$Res>
+    implements $ErrorCopyWith<$Res> {
+  _$ErrorCopyWithImpl(this._self, this._then);
 
-  final _Error _self;
-  final $Res Function(_Error) _then;
+  final Error _self;
+  final $Res Function(Error) _then;
 
 /// Create a copy of ScholarshipsState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? errorMessage = null,}) {
-  return _then(_Error(
+  return _then(Error(
 errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,
   ));

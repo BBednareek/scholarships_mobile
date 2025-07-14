@@ -32,6 +32,8 @@ macos/build/
 .idea/
 
 # Others
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
 .env          
 
 # Firebase emulators / tools

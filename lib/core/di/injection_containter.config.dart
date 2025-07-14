@@ -12,7 +12,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:scholarships/core/router/bloc/router_bloc.dart' as _i615;
 import 'package:scholarships/features/favorites/presentation/favorites_bloc.dart'
     as _i33;
 import 'package:scholarships/features/override_theme/presentation/cubit/override_theme_cubit.dart'
@@ -32,12 +31,11 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final firebaseModule = _$FirebaseModule();
-    gh.singleton<_i615.RouterBloc>(() => _i615.RouterBloc());
     gh.lazySingleton<_i33.FavoritesBloc>(() => _i33.FavoritesBloc());
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.lazySingleton<_i768.OverrideThemeCubit>(
       () => _i768.OverrideThemeCubit(),
     );
-    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.lazySingleton<_i514.ScholarshipsDatasource>(
       () => _i514.ScholarshipsDatasourceImpl(
         firestore: gh<_i974.FirebaseFirestore>(),

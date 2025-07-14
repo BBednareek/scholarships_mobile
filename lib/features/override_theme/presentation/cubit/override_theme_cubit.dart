@@ -38,5 +38,5 @@ class OverrideThemeCubit extends HydratedCubit<ThemeEntity> {
       ThemeEntity.fromJson(json);
 
   @override
-  Map<String, dynamic>? toJson(ThemeEntity state) => {};
+  Map<String, dynamic>? toJson(ThemeEntity state) => state.toJson();
 }

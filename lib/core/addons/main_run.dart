@@ -21,7 +21,10 @@ class MainMethods {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     Bloc.observer = MyBlocObserver();
-    await Firebase.initializeApp(options: getFirebaseOptions());
+
+    Platform.isAndroid
+        ? await Firebase.initializeApp(options: getFirebaseOptions())
+        : await Firebase.initializeApp();
 
     configureDependencies();
   }
