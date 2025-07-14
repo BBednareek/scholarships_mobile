@@ -1,116 +1,84 @@
-# 🎓 Scholarships Mobile App
+# 🎓 Scholarships App – Scraper & Mobile Viewer
 
-This project is a mobile application that displays up-to-date scholarship opportunities scraped from the web. The data is collected using a custom Python scraper and stored in **Firebase Cloud Firestore** for real-time access within the mobile app.
+This project is divided into two complementary parts:
 
----
-
-## 📌 Key Features
-
-- 🔎 Automatically scrapes scholarships from **two target websites**
-- 🔁 Pushes scraped data directly to **Firebase Cloud Firestore**
-- 📱 Mobile app retrieves and displays real-time data
-- 📂 Clean and maintainable project structure
-- 🔥 Firestore ensures real-time updates with no backend server required
+1. [`scholarships_scrapper`](https://github.com/BBednareek/scholarships_scrapper) – A Python web scraper that extracts scholarship data from selected websites and uploads it to Firebase Firestore.
+2. [`scholarships_mobile`](https://github.com/BBednareek/scholarships_mobile) – A Flutter mobile application that fetches this data from Firestore and displays it to end users.
 
 ---
 
-## 🧠 How It Works
+## 📁 Repositories
 
-### Architecture
-
-[ Web Pages (x2) ]
-↓
-[ Python Scraper ]
-↓
-[ Firestore Database (Firebase) ]
-↓
-[ Mobile App ]
-
-
-1. **Scraper**  
-   A Python script you wrote scrapes two websites for scholarship data. It pushes that data immediately to a Firestore database hosted on the Firebase platform.
-
-2. **Database**  
-   Cloud Firestore stores the data in a `scholarships` collection. Documents represent individual scholarship listings.
-
-3. **Mobile App**  
-   The app (written using [insert framework: Flutter, React Native, etc.]) connects to Firestore to display a dynamic, real-time list of scholarships.
+- **Scraper**: [`scholarships_scrapper`](https://github.com/BBednareek/scholarships_scrapper)
+- **Mobile app**: [`scholarships_mobile`](https://github.com/BBednareek/scholarships_mobile)
 
 ---
 
-## 🚀 Getting Started
+## 🔧 scholarships_scrapper
 
-### Clone the Repository
+### Overview
+A Python-based script that:
+- Scrapes scholarship listings from selected online sources
+- Extracts key details (title, description, deadline, link, etc.)
+- Saves the data directly into **Google Firebase Firestore**
+
+### Technologies Used
+- `requests`
+- `BeautifulSoup`
+- `firebase-admin`
+- `python-dotenv`
+
+### Setup
+
+```bash
+git clone https://github.com/BBednareek/scholarships_scrapper.git
+cd scholarships_scrapper
+pip install -r requirements.txt
+```
+
+You’ll need to provide your Firebase service account credentials and set up the `.env` file with the necessary configuration.
+
+---
+
+## 📱 scholarships_mobile
+
+### Overview
+A Flutter mobile app that:
+- Connects to Firebase Firestore
+- Displays the scraped scholarship data
+- Supports basic navigation and filtering
+
+### Features
+- List view of all available scholarships
+- Detail view for each scholarship
+- Real-time updates from Firestore
+
+### Technologies Used
+- Flutter
+- Firebase (Cloud Firestore)
+- BLoC with Freezed
+- Get_it with injectable for dependency injection
+
+### Setup
 
 ```bash
 git clone https://github.com/BBednareek/scholarships_mobile.git
 cd scholarships_mobile
-1. Set Up the Python Scraper
-
-cd scraper
-pip install -r requirements.txt
-Update config.py with:
-
-Your Firebase credentials
-The two URLs to scrape
-Then run the scraper:
-
-python scrape_and_push.py
-This will scrape data and push it to Firestore.
-
-2. Set Up the Mobile App
-
-cd mobile_app
-# For Flutter:
 flutter pub get
-# OR for React Native:
-npm install
-Ensure Firebase is configured in your mobile app:
+```
 
-google-services.json (Android)
-GoogleService-Info.plist (iOS)
-Then run the app:
+Make sure to configure Firebase properly in both Android and iOS folders (add `google-services.json` and `GoogleService-Info.plist` accordingly).
 
+---
 
-# Flutter
-flutter run
-# OR React Native
-npm run android
-🧪 Testing
+## 🔗 How It Works
 
-Python Scraper: Use pytest or run unit tests manually in the scraper/ folder
-Mobile App: Run widget/UI tests using the framework's tools
-🗂️ Project Structure
+1. **Scraper runs periodically** (manually or via CRON/scheduler).
+2. It gathers and uploads scholarship data to **Firestore**.
+3. The **mobile app** retrieves this data and presents it in a user-friendly way.
 
+---
 
-scholarships_mobile/
-├── scraper/               # Python scraper for scraping and uploading
-│   ├── scrape_and_push.py
-│   ├── config.py
-│   └── requirements.txt
-├── mobile_app/            # Cross-platform mobile app code
-│   ├── lib/ or src/
-│   ├── pubspec.yaml or package.json
-│   └── firebase config files
-└── README.md              # Project overview
-📅 Future Improvements
+## 🧑‍💻 Author
 
-Schedule the scraper to run automatically (e.g., with GitHub Actions or a cron job)
-Add filters (e.g., by country, eligibility, deadline)
-Add push notifications for new scholarships
-🤝 Contributing
-
-Fork this repository
-Create a new branch: git checkout -b feature/my-feature
-Commit your changes: git commit -m "Add my feature"
-Push to the branch: git push origin feature/my-feature
-Open a Pull Request
-📄 License
-
-This project is licensed under the MIT License.
-
-📬 Contact
-
-Created by @BBednareek
-For questions or suggestions, please open an issue.
-"""
+Developed by [BBednareek](https://github.com/BBednareek)
